@@ -1,5 +1,4 @@
 import streamlit as st
-from docx import Document
 from pdfminer.high_level import extract_text
 import openai
 from getpass import getpass
@@ -15,6 +14,10 @@ resume_text = input("Paste your resume here: ")
 
 # Input field for the job description
 job_description_text = input("Paste the job description here: ")
+
+uploaded_file = st.file_uploader('Choose your .pdf file', type="pdf")
+if uploaded_file is not None:
+    df = extract_data(uploaded_file)
 
 # Cell 3: Function to generate text using OpenAI
 def analyze_text(text):
@@ -40,6 +43,8 @@ def analyze_text(text):
 
 # Input field for the job description
 job_description_text = input("Paste the job description here: ")
+
+compare_resume_to_job_description(resume_text, job_description_text)
 
 # Cell 4: Function to generate the image
 def generate_image(text):
