@@ -1,5 +1,5 @@
 import streamlit as st
-import openai
+from openai import OpenAI
 from getpass import getpass
 
 # Securely input your OpenAI API key
